@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- This is the parent POM — it organizes all modules -->
+    <groupId>com.freightforge</groupId>
+    <artifactId>freight-forwarding</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>       <!-- "pom" means this is a parent, not a runnable jar -->
+
+    <!-- Inherit Spring Boot's dependency management -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.0</version>
+        <relativePath/>
+    </parent>
+
+    <!-- List all 4 child modules -->
+    <modules>
+        <module>freight-domain</module>
+        <module>freight-application</module>
+        <module>freight-infrastructure</module>
+        <module>freight-api</module>
+    </modules>
+
+    <!-- Global settings -->
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <lombok.version>1.18.32</lombok.version>
+    </properties>
+
+    <!-- Manage versions of internal modules in one place -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.freightforge</groupId>
+                <artifactId>freight-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.freightforge</groupId>
+                <artifactId>freight-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.freightforge</groupId>
+                <artifactId>freight-infrastructure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
